@@ -5,7 +5,6 @@ import requests
 import numpy as np
 import face_recognition
 
-
 # This is an example of running face recognition on a single image
 # and drawing a box around each person that was identified.
 
@@ -43,10 +42,15 @@ def api():
 	print(password)
 	return "<h1>Distant  Archive</h1>" + username + " " + password
 
-@app.route('/req', methods=['GET'])
+@app.route('/req/<url>', methods=['GET'])
 def req():
+
+    url = url.replace("*", "/")
+	im = Image.open(requests.get(url, stream=True).raw)
+	im = im.convert('RGB')
+	unknown_image = np.array(im)
 	# Load an image with an unknown face
-	unknown_image = face_recognition.load_image_file("Obama2.jpg")
+	#unknown_image = face_recognition.load_image_file("Obama2.jpg")
 
 	# Find all the faces and face encodings in the unknown image
 	face_locations = face_recognition.face_locations(unknown_image)
