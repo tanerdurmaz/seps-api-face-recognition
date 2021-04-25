@@ -46,7 +46,7 @@ def api():
 @app.route('/req', methods=['GET'])
 def req():
 	# Load an image with an unknown face
-	unknown_image = face_recognition.load_image_file("obama2.jpg")
+	unknown_image = face_recognition.load_image_file("Obama2.jpg")
 
 	# Find all the faces and face encodings in the unknown image
 	face_locations = face_recognition.face_locations(unknown_image)
