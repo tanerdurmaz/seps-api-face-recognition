@@ -4,3 +4,5 @@ flask
 requests
 jsonify
 face_recognition
+numpy
+PIL
