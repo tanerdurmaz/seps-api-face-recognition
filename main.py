@@ -44,7 +44,6 @@ def api():
 
 @app.route('/req/<url>', methods=['GET'])
 def req():
-
     url = url.replace("*", "/")
 	im = Image.open(requests.get(url, stream=True).raw)
 	im = im.convert('RGB')
