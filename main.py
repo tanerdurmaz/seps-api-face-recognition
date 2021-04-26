@@ -25,14 +25,13 @@ known_face_names = [
     "Barack Obama",
     "Joe Biden"
 ]
-print('Learned encoding for', len(known_face_encodings), 'images.')
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def home():
-    return "<h1>seps xd.</p>"
+    return "<p>The face recognition API for Social Event Photo Event project, contact: taner.durmaz.cs@gmail.com </p>"
 
 @app.route('/api', methods=['GET'])
 def api():
