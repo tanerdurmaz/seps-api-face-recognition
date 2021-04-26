@@ -42,11 +42,12 @@ def api():
     print(password)
     return "<h1>Distant  Archive</h1>" + username + " " + password
 
-@app.route('/find/<url>', methods=['GET'])
+@app.route('/find/<path:url>', methods=['GET'])
 def find(url):
     #url = urllib.parse.unquote_plus(url)
-    if url:
-    	return url
+    #if url:
+    #	return url
+
     #url = url.replace("*", "/")
     im = Image.open(requests.get(url, stream=True).raw)
     im = im.convert('RGB')
