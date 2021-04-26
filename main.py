@@ -44,9 +44,9 @@ def api():
 
 @app.route('/find/<url>', methods=['GET'])
 def find(url):
-    url = urllib.parse.unquote_plus(url)
-    if url:
-    	return url
+    #url = urllib.parse.unquote_plus(url)
+    #if url:
+    #	return url
     #url = url.replace("*", "/")
     im = Image.open(requests.get(url, stream=True).raw)
     im = im.convert('RGB')
