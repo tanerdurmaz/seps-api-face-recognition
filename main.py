@@ -41,8 +41,8 @@ def api():
     print(password)
     return "<h1>Distant  Archive</h1>" + username + " " + password
 
-@app.route('/req/<url>', methods=['GET'])
-def req(url):
+@app.route('/find/<url>', methods=['GET'])
+def find(url):
     url = url.replace("*", "/")
     im = Image.open(requests.get(url, stream=True).raw)
     im = im.convert('RGB')
