@@ -4,6 +4,7 @@ from PIL import Image, ImageDraw
 import requests
 import numpy as np
 import face_recognition
+import urllib
 
 # This is an example of running face recognition on a single image
 # and drawing a box around each person that was identified.
@@ -43,7 +44,8 @@ def api():
 
 @app.route('/find/<url>', methods=['GET'])
 def find(url):
-    url = url.replace("*", "/")
+    url = urllib.parse.unquote_plus(url)
+    #url = url.replace("*", "/")
     im = Image.open(requests.get(url, stream=True).raw)
     im = im.convert('RGB')
     unknown_image = np.array(im)
