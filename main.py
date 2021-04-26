@@ -34,8 +34,15 @@ app.config["DEBUG"] = True
 def home():
     return "<p>The face recognition API for Social Event Photo Event project, contact: taner.durmaz.cs@gmail.com </p>"
 
-@app.route('/api/<path:url>/<pid>', methods=['GET'])
-def api(url=None, pid=None):
+@app.route('/train/<path:url>/<pid>', methods=['GET'])
+def train(url=None, pid=None):
+    im = Image.open(requests.get(url, stream=True).raw)
+    im = im.convert('RGB')
+    image = np.array(im)
+    
+    face_encoding = face_recognition.face_encodings(image)[0]
+    known_face_encodings.append(face_encoding)
+    known_face_names.append(pid)
 
     return "<p>pic url and profile id</p>" + url + " " + pid
 
