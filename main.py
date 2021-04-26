@@ -34,13 +34,10 @@ app.config["DEBUG"] = True
 def home():
     return "<p>The face recognition API for Social Event Photo Event project, contact: taner.durmaz.cs@gmail.com </p>"
 
-@app.route('/api', methods=['GET'])
-def api():
-    username = request.args.get('username')
-    print(username)
-    password= request.args.get('password')
-    print(password)
-    return "<h1>Distant  Archive</h1>" + username + " " + password
+@app.route('/api/<path:url>/<pid>', methods=['GET'])
+def api(url=None, pid=None):
+
+    return "<p>pic url and profile id</p>" + url + " " + pid
 
 @app.route('/find/<path:url>', methods=['GET'])
 def find(url):
