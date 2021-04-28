@@ -5,6 +5,7 @@ import requests
 import numpy as np
 import face_recognition
 import urllib
+import json
 
 # This is an example of running face recognition on a single image
 # and drawing a box around each person that was identified.
@@ -64,6 +65,8 @@ def find(url):
     face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
     
     name = "Unknown"
+    resName = []
+	resLoc = []
     for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
         # See if the face is a match for the known face(s)
         matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
@@ -75,4 +78,8 @@ def find(url):
         best_match_index = np.argmin(face_distances)
         if matches[best_match_index]:
             name = known_face_names[best_match_index]
-    return name
+            resName.append(name)
+            resLoc.append(face_distances.tolist())
+            joinedlist = resName + resLoc
+			jsonStr = json.dumps(joinedlist)
+    return jsonStr
