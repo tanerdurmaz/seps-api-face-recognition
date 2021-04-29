@@ -6,7 +6,7 @@ import numpy as np
 import face_recognition
 import urllib
 import json
-
+import io
 # This is an example of running face recognition on a single image
 # and drawing a box around each person that was identified.
 
