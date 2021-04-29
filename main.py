@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw
 import requests
 import numpy as np
 import face_recognition
-import urllib
+import urllib.request
 import json
 
 # This is an example of running face recognition on a single image
@@ -52,9 +52,10 @@ def find(url):
     #url = urllib.parse.unquote_plus(url)
     #if url:
     #	return url
+    urllib.request.urlretrieve(url,"1.jpg")
+    im = Image.open("1.jpg")
 
-    #url = url.replace("*", "/")
-    im = Image.open(requests.get(url, stream=True).raw)
+    #im = Image.open(requests.get(url, stream=True).raw)
     im = im.convert('RGB')
     unknown_image = np.array(im)
     # Load an image with an unknown face
