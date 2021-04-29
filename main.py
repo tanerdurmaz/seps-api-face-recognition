@@ -54,9 +54,15 @@ def find(url):
     #	return url
 
     #url = url.replace("*", "/")
-    im = Image.open(requests.get(url))
+    #im = Image.open(requests.get(url, stream=True).raw)
+    #im = im.convert('RGB')
+    #unknown_image = np.array(im)
+
+    response = requests.get(url)
+    im = Image.open(BytesIO(response.content))
     im = im.convert('RGB')
     unknown_image = np.array(im)
+
     # Load an image with an unknown face
     #unknown_image = face_recognition.load_image_file("Obama2.jpg")
 
