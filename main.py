@@ -55,7 +55,7 @@ def find(url):
     #unknown_image = np.array(im)
 
     r = requests.get(url, stream=True)
-    im = Image.open(io.BytesIO(r.content))
+    im = Image.open(io.BytesIO(r.content).output.seek(0))
     im = im.convert('RGB')
     unknown_image = np.array(im)
     # Find all the faces and face encodings in the unknown image
