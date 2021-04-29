@@ -5,4 +5,4 @@ requests
 jsonify
 face_recognition
 numpy
-pillow
+pillow==8.2.0
