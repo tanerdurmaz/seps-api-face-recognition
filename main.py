@@ -37,7 +37,7 @@ def home():
 
 @app.route('/train/<path:url>/<pid>', methods=['GET'])
 def train(url=None, pid=None):
-    im = Image.open(requests.get(url, stream=True).raw)
+    im = Image.open(requests.get(url, stream=True))
     im = im.convert('RGB')
     image = np.array(im)
     
