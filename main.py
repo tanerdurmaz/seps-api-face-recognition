@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw
 import requests
 import numpy as np
 import face_recognition
-import urllib.request
+import urllib
 import json
 
 # This is an example of running face recognition on a single image
