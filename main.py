@@ -49,17 +49,15 @@ def train(url=None, pid=None):
 
 @app.route('/find/<path:url>', methods=['GET'])
 def find(url):
-    #url = urllib.parse.unquote_plus(url)
-    #if url:
-    #	return url
 
-    #url = url.replace("*", "/")
-    im = Image.open(requests.get(url, stream=True).raw)
+    #im = Image.open(requests.get(url, stream=True).raw)
+    # = im.convert('RGB')
+    #unknown_image = np.array(im)
+
+    r = requests.get(url, stream=True)
+    im = Image.open(io.BytesIO(r.content))
     im = im.convert('RGB')
     unknown_image = np.array(im)
-    # Load an image with an unknown face
-    #unknown_image = face_recognition.load_image_file("Obama2.jpg")
-
     # Find all the faces and face encodings in the unknown image
     face_locations = face_recognition.face_locations(unknown_image)
     face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
